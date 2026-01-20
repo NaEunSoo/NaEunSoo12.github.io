@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이크로컨트롤러 제어 기초 | 공업고등학교 수업</title>
+    <meta name="description" content="공업고등학교 마이크로컨트롤러 제어 수업의 핵심 기초 개념을 학습하는 웹페이지입니다.">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <div class="bg-glow"></div>
+
+    <header>
+        <div class="logo">MCU Masterclass</div>
+        <nav>
+            <ul>
+                <li><a href="#intro">소개</a></li>
+                <li><a href="#concepts">핵심 개념</a></li>
+                <li><a href="#workflow">제어 과정</a></li>
+                <li><a href="#resources">학습 자료</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>마이크로컨트롤러<span>제어의 시작</span></h1>
+                <p>
+                    현대 산업의 심장, 마이크로컨트롤러! 
+                    기초부터 탄탄하게 배워보는 공업고등학교 마이크로컨트롤러 제어 수업에 오신 것을 환영합니다.
+                </p>
+                <a href="#concepts" class="btn">핵심 개념 알아보기</a>
+            </div>
+            <div class="hero-image">
+                <img src="hero.png" alt="Microcontroller Concept Image">
+            </div>
+        </section>
+
+        <section id="intro">
+            <h2 class="section-title">마이크로컨트롤러란?</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <i class="ph-bold ph-cpu" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h3>정의</h3>
+                    <p>하나의 칩 안에 CPU, 메모리, 입출력 포트가 모두 내장된 초소형 컴퓨터입니다.</p>
+                </div>
+                <div class="card">
+                    <i class="ph-bold ph-circuit-board" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h3>용도</h3>
+                    <p>가전제품, 자동차, 산업 로봇 등 다양한 임베디드 장치를 제어하는 데 사용됩니다.</p>
+                </div>
+                <div class="card">
+                    <i class="ph-bold ph-lightning" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h3>특징</h3>
+                    <p>저전력으로 동작하며, 특정 목적을 가진 작업을 수행하는 데 최적화되어 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="concepts">
+            <h2 class="section-title">핵심 구성 요소</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>CPU (중앙처리장치)</h3>
+                    <p>연산과 제어를 담당하는 두뇌 역할을 합니다. 명령어 세트를 해석하고 실행합니다.</p>
+                </div>
+                <div class="card">
+                    <h3>Memory (메모리)</h3>
+                    <p>프로그램이 저장되는 ROM(플래시 메모리)과 데이터를 일시 저장하는 RAM으로 구성됩니다.</p>
+                </div>
+                <div class="card">
+                    <h3>I/O Port (입출력 포트)</h3>
+                    <p>센서로부터 신호를 받거나(입력), 모터와 LED를 작동시키는(출력) 인터페이스입니다.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Microcontroller Control Education. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const section = document.querySelector(this.getAttribute('href'));
+                section.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Simple scroll animation for cards
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease-out';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
